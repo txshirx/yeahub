@@ -1,0 +1,24 @@
+
+:root {
+  font-family: 'Manrope', sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.5;
+}
+
+button {
+  background-color: #ffffff;
+  color: #191919;
+  border: none;
+}
+
+
+input {
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+
+
+
