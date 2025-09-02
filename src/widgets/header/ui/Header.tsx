@@ -1,7 +1,7 @@
 import { Colors } from "@/shared/constans/Colors";
 import LogoIcon from "@/shared/ui/Icons/LogoIcon";
 
-export default function Header() {
+export const Header = () => {
     return (
         <header
             style={{

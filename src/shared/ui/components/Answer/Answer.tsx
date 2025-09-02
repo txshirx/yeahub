@@ -1,4 +1,4 @@
-export const Answer = ({ answer } : { answer: string | null }) => {
+export const Answer = ({ answer } : { answer: string }) => {
 
     if (!answer) return null
 

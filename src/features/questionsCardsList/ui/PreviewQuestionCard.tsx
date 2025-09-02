@@ -5,20 +5,20 @@ import { questionsSlice } from "../model/questions.slice"
 import { Answer, RatingItem } from "@/shared/ui/components"
 import type { Question } from "@/shared/api/types/types"
 import React from "react"
+import MoreArrow from "@/shared/ui/Icons/MoreArrow"
+import { NavLink } from "react-router-dom"
+import { ROUTES } from "@/shared/model/routes"
+import { Colors } from "@/shared/constans/Colors"
 
 type PreviewCardQuestionProps = Pick<Question, 'title' | 'id' | 'shortAnswer' | 'rate' | 'complexity'>
 
-function PreviewQuestionCard({ title, id, shortAnswer, rate, complexity }: PreviewCardQuestionProps) {
+export const PreviewQuestionCard = React.memo(({ title, id, shortAnswer, rate, complexity }: PreviewCardQuestionProps) => {
     const dispatch = useAppDispatch()
-    console.log('main questions list')
     const clicked = useAppSelector(state => questionsSlice.selectors.selectQuestionsInfo(state, id))
-
-    console.log('render card', id)
 
     return (
         <>
-            <div
-                onClick={() => dispatch(questionsSlice.actions.infoQuestion({ questionId: id, value: !clicked }))}
+            <div onClick={() => dispatch(questionsSlice.actions.infoQuestion({ questionId: id, value: !clicked }))}
                 style={{
                     width: 760,
                     minHeight: 64,
@@ -27,7 +27,7 @@ function PreviewQuestionCard({ title, id, shortAnswer, rate, complexity }: Previ
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                 }}
             >
                 <div style={{
@@ -41,7 +41,6 @@ function PreviewQuestionCard({ title, id, shortAnswer, rate, complexity }: Previ
                 <MoreButtonQuestionIcon />
             </div>
 
-
             <div
                 style={{
                     maxWidth: 768,
@@ -52,6 +51,9 @@ function PreviewQuestionCard({ title, id, shortAnswer, rate, complexity }: Previ
                     pointerEvents: clicked ? 'auto' : 'none',
                     borderBottom: 'solid #D1D1D1 1px',
                     cursor: 'pointer',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 10
                 }}
             >
                 <div style={{
@@ -65,9 +67,20 @@ function PreviewQuestionCard({ title, id, shortAnswer, rate, complexity }: Previ
                     <RatingItem complexity={complexity} />
                 </div>
                 <Answer answer={shortAnswer} />
+                <NavLink to={`${ROUTES.QUESTIONS}/${id}`} 
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'end',
+                        gap: 10,
+                        alignItems: 'center',
+                        textDecoration: 'none',
+                        marginBottom: 10,
+                        color: Colors.MainYeahub,
+                    }}
+                > 
+                    <span>Показать больше</span> <MoreArrow/>
+                </NavLink>
             </div>
         </>
     )
-}
-
-export default React.memo(PreviewQuestionCard)
+})

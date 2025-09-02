@@ -1,0 +1,1 @@
+export { FilterCard } from '@/features/filterCard/ui/FilterCard'

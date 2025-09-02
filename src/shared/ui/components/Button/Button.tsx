@@ -1,6 +1,6 @@
 import { Colors } from "@/shared/constans/Colors"
 
-export const WhiteButton = ({text, clearFilters} : { text: string, clearFilters: () => void }) => {
+export const Button = ({text, clearFilters} : { text: string, clearFilters: () => void }) => {
     
     return (
         <button onClick={() => clearFilters()} style={{

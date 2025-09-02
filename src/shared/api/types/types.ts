@@ -20,16 +20,16 @@ export type Question = {
   id: number;
   title: string;
   description: string;
-  code?: string;
-  imageSrc?: string;
-  keywords?: string[];
-  longAnswer?: string;
-  shortAnswer: string | null;
-  status?: 'public' | 'private' | string; 
-  rate?: number;
-  complexity?: number;
-  createdById?: string;
-  updatedById?: string;
+  code: string;
+  imageSrc: string;
+  keywords: string[];
+  longAnswer: string;
+  shortAnswer: string;
+  status: 'public' | 'private' | string; 
+  rate: number;
+  complexity: number;
+  createdById: string;
+  updatedById: string;
   questionSpecializations: Specialization[];
   questionSkills: Skills[];
   createdAt: string; 
@@ -61,10 +61,13 @@ export type RateType = number[]
 
 export type ComplexityType = number[]
 
-export type ParamsType = {
-  specialization?: number,
-  skills?: number[],
-  complexity?: ComplexityType,
-  rate?: RateType,
-  filter?: 'rate' | 'complexity' | 'skills' | 'specialization'
-}
+export type FilterType = "specializations" | "skills" | "complexity" | "rate";
+
+export type ParamsType = Partial<{
+  specializations: number[],
+  skills: number[],
+  complexity: number[],
+  rate: number[],
+  keywords: string[],
+  page: number,
+}>

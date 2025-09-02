@@ -3,7 +3,6 @@ import { store } from "../providers";
 
 export default function AppLayout({ children } : { children: React.ReactNode }) {
 
-    console.log('render layout')
     
     return (
         <Provider store={store}>
